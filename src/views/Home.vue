@@ -1,8 +1,5 @@
 <template>
   <div class="home">
-    <div>
-      <Navbar />
-    </div>
     <h1>Bloggers</h1>
 
     <div v-if="showLogin">
