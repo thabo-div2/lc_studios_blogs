@@ -1,5 +1,6 @@
 <template>
 	<nav>
+		<router-link :to="{ name: 'ViewPost' }">See All Post</router-link>
 		<div v-if="user">
 			<div>
 				<p>hey there... {{ user.displayName }}</p>
@@ -13,16 +14,19 @@
 <script>
 import useLogout from "../composables/useLogout";
 import getUsers from "../composables/getUsers";
+import { useRouter } from "vue-router";
 
 export default {
 	setup() {
 		const { user } = getUsers();
 		const { logout, error } = useLogout();
+		const router = useRouter();
 
 		const handleClick = async () => {
 			await logout();
 			if (!error.value) {
 				console.log("user logged out");
+				router.push("/");
 			}
 		};
 
