@@ -1,6 +1,6 @@
 <template>
 	<div class="home">
-		<h1>BlogGas</h1>
+		<h1>Bloggers</h1>
 
 		<div v-if="showLogin">
 			<h2>Login</h2>
@@ -25,9 +25,11 @@ import Signup from "../components/Signup.vue";
 import Login from "../components/Login.vue";
 import { ref } from "@vue/reactivity";
 
+import Navbar from "../components/Navbar.vue";
+
 export default {
 	name: "Home",
-	components: { Signup, Login },
+	components: { Signup, Login, Navbar },
 	setup() {
 		const showLogin = ref(true);
 
