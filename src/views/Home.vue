@@ -1,23 +1,26 @@
 <template>
-	<div class="home">
-		<h1>Bloggers</h1>
+  <div class="home">
+    <div>
+      <Navbar />
+    </div>
+    <h1>Bloggers</h1>
 
-		<div v-if="showLogin">
-			<h2>Login</h2>
-			<Login />
-			<p>
-				no account yet? <span @click="showLogin = false">Signup</span> instead
-			</p>
-		</div>
-		<div v-else>
-			<h2>Sign up</h2>
-			<Signup />
-			<p>
-				already registered?
-				<span @click="showLogin = true">Login</span> instead
-			</p>
-		</div>
-	</div>
+    <div v-if="showLogin">
+      <h2>Login</h2>
+      <Login />
+      <p>
+        no account yet? <span @click="showLogin = false">Signup</span> instead
+      </p>
+    </div>
+    <div v-else>
+      <h2>Sign up</h2>
+      <Signup />
+      <p>
+        already registered?
+        <span @click="showLogin = true">Login</span> instead
+      </p>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -28,12 +31,12 @@ import { ref } from "@vue/reactivity";
 import Navbar from "../components/Navbar.vue";
 
 export default {
-	name: "Home",
-	components: { Signup, Login, Navbar },
-	setup() {
-		const showLogin = ref(true);
+  name: "Home",
+  components: { Signup, Login, Navbar },
+  setup() {
+    const showLogin = ref(true);
 
-		return { showLogin };
-	},
+    return { showLogin };
+  },
 };
 </script>
