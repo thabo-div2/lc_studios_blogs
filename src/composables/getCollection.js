@@ -8,11 +8,10 @@ const getCollection = (collection) => {
 
 	let collectionRef = projectFirestore
 		.collection(collection)
-		.orderBy("createdAt");
+		.orderBy("createdAt", "desc");
 
 	const unsub = collectionRef.onSnapshot(
 		(snap) => {
-			console.log("snapshot");
 			let results = [];
 			snap.docs.forEach((doc) => {
 				doc.data().createdAt && results.push({ ...doc.data(), id: doc.id });
