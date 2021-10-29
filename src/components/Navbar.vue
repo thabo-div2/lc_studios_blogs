@@ -1,7 +1,8 @@
 <template>
 	<nav>
-		<router-link :to="{ name: 'ViewPost' }">See All Post</router-link>
 		<div v-if="user">
+			<router-link :to="{ name: 'ViewPost' }">See All Post</router-link>
+			<router-link :to="{ name: 'CreatePost' }">Create a Post</router-link>
 			<div>
 				<p>hey there... {{ user.displayName }}</p>
 				<p class="email">Currently logged in as... {{ user.email }}</p>
