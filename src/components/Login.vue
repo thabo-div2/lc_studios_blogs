@@ -112,6 +112,10 @@ export default {
     background-image: url(../assets/login_image.jpg);
   }
   .login_btn {
-    
+    background: #E3AD1B;
+    border: none;
+    width: 35%;
+    padding: 9px 0 9px 0;
+    border-radius: 15px;
   }
 </style>
