@@ -53,7 +53,7 @@ export default {
 body {
 	/* background: #529C79; */
 	background: #327a77;
-	overflow: hidden;
+	/* overflow: hidden; */
 }
 .home {
 	background: #fefefe;
@@ -62,9 +62,11 @@ body {
 	margin: 20px 40px 0 0;
 	border-radius: 20px;
 }
-#app {
+.home_content {
 	display: flex;
 	justify-content: flex-end;
+	width: 100vw;
+	height: 100vh;
 }
 form {
 	background: none;
