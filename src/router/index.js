@@ -3,6 +3,7 @@ import { projectAuth } from "../firebase/config";
 import Home from "../views/Home.vue";
 import CreatePost from "../views/CreatePost.vue";
 import ViewPost from "../views/ViewPost.vue";
+import SinglePost from "../views/SinglePost.vue";
 
 // auth guard
 const requireAuth = (to, from, next) => {
@@ -40,6 +41,12 @@ const routes = [
 		path: "/posts/create",
 		name: "CreatePost",
 		component: CreatePost,
+	},
+	{
+		path: "/posts/:id",
+		name: "SinglePost",
+		component: SinglePost,
+		props: true,
 	},
 ];
 
