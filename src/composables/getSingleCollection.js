@@ -1,30 +1,35 @@
 import { ref } from "vue";
 import { projectFirestore } from "../firebase/config";
+import { watchEffect } from "@vue/runtime-core";
 
 const getSingleCollection = (collection, id) => {
 	const post = ref(null);
 	const error = ref(null);
 
-	const load = async () => {
-		try {
-			let res = await projectFirestore.collection(collection).doc(id).get();
+	let documentRef = projectFirestore.collection(collection).doc(id);
 
-			if (!res.exists) {
-				throw Error("There is no blog post here");
+	const unsub = documentRef.onSnapshot(
+		(snap) => {
+			if (snap.data()) {
+				post.value = { ...snap.data(), id: snap.id };
+				error.value = null;
+			} else {
+				error.value = "that document does not exist";
 			}
+		},
+		(err) => {
+			console.log(err.message);
+			documents.value = null;
+			error.value = "could not fetch documen";
+		},
+	);
 
-			console.log(res.data());
-			post.value = {
-				...res.data(),
-				id: res.id,
-			};
-		} catch (err) {
-			error.value = err.message;
-			console.log(error.value);
-		}
-	};
+	watchEffect((onInvalidate) => {
+		// unsub from prev collection when watcher is stopped (component unmounted)
+		onInvalidate(() => unsub());
+	});
 
-	return { post, error, load };
+	return { post, error };
 };
 
 export default getSingleCollection;

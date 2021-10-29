@@ -2,6 +2,7 @@
 	<div v-if="error">{{ error }}</div>
 	<div v-if="post">
 		<h3>{{ post.title }}</h3>
+		<img :src="post.coverUrl" />
 		<p>{{ post.content }}</p>
 		<button @click="deletePost">Delete Post</button>
 	</div>
@@ -17,9 +18,7 @@ export default {
 	setup(props) {
 		const route = useRoute();
 		const router = useRouter();
-		const { error, post, load } = getSingleCollection("posts", route.params.id);
-
-		load();
+		const { error, post } = getSingleCollection("posts", route.params.id);
 
 		const deletePost = async () => {
 			await projectFirestore.collection("posts").doc(props.id).delete();
