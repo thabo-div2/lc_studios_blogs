@@ -1,27 +1,19 @@
 <template>
 	<div>
-		<div v-if="documents">
-			<div v-for="doc in formattedDocuments" :key="doc">
-				<h3>{{ doc.title }}</h3>
-				<img :src="doc.coverUrl" />
-				<p>Author: {{ doc.userName }}</p>
-				<p>{{ doc.content }}</p>
-				<div v-for="tag in doc.tags" :key="tag">
-					<p># {{ tag }} ,</p>
-				</div>
-				<p>{{ doc.createdAt }}</p>
-			</div>
-		</div>
+		<BlogPosts v-if="showPosts" :formattedDocuments="formattedDocuments" />
 	</div>
 </template>
 
 <script>
+import BlogPosts from "@/components/BlogPosts.vue";
 import getCollection from "@/composables/getCollection";
 import { formatDistanceToNow } from "date-fns";
 import { computed } from "vue";
+
 export default {
+	components: { BlogPosts },
 	setup() {
-		const { error, documents } = getCollection("posts");
+		const { error, documents, showPosts } = getCollection("posts");
 
 		const formattedDocuments = computed(() => {
 			if (documents.value) {
@@ -32,7 +24,7 @@ export default {
 			}
 		});
 
-		return { error, documents, formattedDocuments };
+		return { error, documents, formattedDocuments, showPosts };
 	},
 };
 </script>

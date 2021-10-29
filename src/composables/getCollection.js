@@ -4,6 +4,7 @@ import { watchEffect } from "@vue/runtime-core";
 
 const getCollection = (collection) => {
 	const documents = ref(null);
+	const showPosts = ref(true);
 	const error = ref(null);
 
 	let collectionRef = projectFirestore
@@ -31,7 +32,7 @@ const getCollection = (collection) => {
 		onInvalidate(() => unsub());
 	});
 
-	return { error, documents };
+	return { error, documents, showPosts };
 };
 
 export default getCollection;
