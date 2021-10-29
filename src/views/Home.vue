@@ -1,13 +1,18 @@
 <template>
 	<div class="home">
-		<h1>Bloggers</h1>
-
-		<div v-if="showLogin">
-			<h2>Login</h2>
-			<Login />
-			<p>
-				no account yet? <span @click="showLogin = false">Signup</span> instead
-			</p>
+		<div class="form_container" v-if="showLogin">
+			<div class="form_image"></div>
+			<div class="form_content">
+				<h1 class="title">The Blog Cultivaters</h1>
+				<div>
+					<h2 class="subtitle">Login</h2>
+					<Login />
+					<p>
+						no account yet?
+						<span @click="showLogin = false">Signup</span> instead
+					</p>
+				</div>
+			</div>
 		</div>
 		<div v-else>
 			<h2>Sign up</h2>
