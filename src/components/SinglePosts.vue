@@ -1,9 +1,9 @@
 <template>
 	<div>
-		<router-link :to="{ name: 'SinglePost', params: { id: doc.id } }">
-			<h3>{{ doc.title }}</h3>
+		<img class="single_post_img" :src="doc.coverUrl" />
+		<router-link :to="{ name: 'SinglePost', params: { id: doc.id } }"  class="post_title_container">
+			<h3 class="post_title">{{ doc.title }}</h3>
 		</router-link>
-		<img :src="doc.coverUrl" />
 		<p>Author: {{ doc.userName }}</p>
 		<p>{{ snippet }}</p>
 		<div v-for="tag in doc.tags" :key="tag">
