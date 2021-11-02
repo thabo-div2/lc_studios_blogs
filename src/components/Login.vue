@@ -139,11 +139,13 @@ form {
 	background-repeat: repeat;
 }
 .form_content {
-	display: flex;
-	position: relative;
-	flex-direction: column;
-	width: 55%;
-	align-items: center;
+    background: white;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    width: 55%;
+    align-items: center;
+    border-radius: 0 20px 20px 0;
 }
 .form_content::before {
 	width: 100%;
