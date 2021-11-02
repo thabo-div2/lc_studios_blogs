@@ -23,6 +23,7 @@ export default {
 		const { user } = getUsers();
 		const { deleteImage } = useStorage();
 		const { delDoc } = useSingleCollection("posts", props.id);
+		const router = useRouter();
 
 		const ownership = computed(() => {
 			return post.value && user.value && user.value.uid == post.value.userId;
@@ -31,6 +32,7 @@ export default {
 		const handleDelete = async () => {
 			await deleteImage(post.value.filePath);
 			await delDoc();
+			router.push({ name: "ViewPost" });
 		};
 
 		return { error, post, ownership, handleDelete };
