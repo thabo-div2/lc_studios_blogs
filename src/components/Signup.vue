@@ -61,15 +61,15 @@ export default {
 };
 </script>
 
-<<<<<<< HEAD
 <style lang="scss">
-======= <style > .signup_form {
+.signup_form {
   display: flex;
   width: 70%;
   margin: 0 0 0 70px;
   align-items: center;
+  flex-direction: column;
 }
->>>>>>>1af3cd784f1bff1d0119f8a5d5080983ecf86ecd .signup_subtitle {
+.signup_subtitle {
   color: #e3ad1b;
   /* -webkit-text-stroke: 0.5px black; */
   /* -webkit-font-smoothing: antialiased; */
