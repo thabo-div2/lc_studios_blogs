@@ -51,9 +51,15 @@ export default {
 /* @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300&display=swap'); */
 @import url("https://fonts.googleapis.com/css2?family=Barlow:wght@300;700&display=swap");
 body {
+<<<<<<< HEAD
   /* background: #529C79; */
   background: #327a77;
   overflow: hidden;
+=======
+	/* background: #529C79; */
+	background: #327a77;
+	/* overflow: hidden; */
+>>>>>>> fdfd4561e750900a9fc397e450bf760e478c2764
 }
 .home {
   background: #fefefe;
@@ -62,9 +68,17 @@ body {
   margin: 20px 40px 0 0;
   border-radius: 20px;
 }
+<<<<<<< HEAD
 #app {
   display: flex;
   justify-content: flex-end;
+=======
+.home_content {
+	display: flex;
+	justify-content: flex-end;
+	width: 100vw;
+	height: 100vh;
+>>>>>>> fdfd4561e750900a9fc397e450bf760e478c2764
 }
 form {
   background: none;
