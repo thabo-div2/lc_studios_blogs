@@ -1,6 +1,6 @@
 <template>
 	<div class="post_page_container">
-		<div>
+		<div class="post_page">
 			<BlogPosts v-if="showPosts" :formattedDocuments="formattedDocuments" />
 		</div>
 	</div>
@@ -32,9 +32,19 @@ export default {
 </script>
 
 <style>
-img {
-	width: 300px;
-	height: 300px;
-	object-fit: cover;
+.single_post_img {
+    width: 90vw;
+    height: 100vh;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+.post_page {
+	width: 100%
+}
+.post_title_container {
+	text-decoration: none;
+	/* position: absolute; */
+    /* bottom: -16%; */
+    /* left: 50%; */
 }
 </style>
