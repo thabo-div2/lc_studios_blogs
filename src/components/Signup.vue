@@ -67,6 +67,7 @@ export default {
     width: 70%;
     margin: 0 0 0 70px;
     align-items: center;
+	flex-direction: column;
 }
 .signup_subtitle {
 	color: #e3ad1b;
