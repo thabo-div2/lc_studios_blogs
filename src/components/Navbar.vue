@@ -138,6 +138,7 @@ export default {
 		width: 100%;
 		top: 0;
 		height: 25vh;
+		/* z-index: 1; */
 	}
 	.form-control {
 		border: none;
