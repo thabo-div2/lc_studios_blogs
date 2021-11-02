@@ -1,5 +1,5 @@
 <template>
-	<form @submit.prevent="handlePost">
+	<form class="create_post" @submit.prevent="handlePost">
 		<h4>Create Blog Post</h4>
 		<input type="text" placeholder="Title" v-model="title" required />
 		<textarea placeholder="Content..." v-model="content" required></textarea>
@@ -114,5 +114,11 @@ label {
 }
 button {
 	margin-top: 20px;
+}
+.create_post {
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 </style>

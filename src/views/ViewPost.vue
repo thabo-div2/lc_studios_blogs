@@ -1,6 +1,8 @@
 <template>
-	<div>
-		<BlogPosts v-if="showPosts" :formattedDocuments="formattedDocuments" />
+	<div class="post_page_container">
+		<div>
+			<BlogPosts v-if="showPosts" :formattedDocuments="formattedDocuments" />
+		</div>
 	</div>
 </template>
 
