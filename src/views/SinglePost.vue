@@ -6,6 +6,8 @@
 		<p>{{ post.content }}</p>
 		<button v-if="ownership" @click="handleDelete">Delete Post</button>
 	</div>
+	<CommentsWindow :doc="props.id" />
+	<CommentsForm :doc="props.id" />
 </template>
 
 <script>
@@ -14,10 +16,13 @@ import useSingleCollection from "@/composables/useSingleCollection";
 import getSingleCollection from "@/composables/getSingleCollection";
 import getUsers from "@/composables/getUsers";
 import useStorage from "@/composables/useStorage";
+import CommentsForm from "@/components/CommentsForm.vue";
 import { computed } from "@vue/reactivity";
+import CommentsWindow from "@/components/CommentsWindow.vue";
 
 export default {
 	props: ["id"],
+	components: { CommentsForm, CommentsWindow },
 	setup(props) {
 		const { error, post } = getSingleCollection("posts", props.id);
 		const { user } = getUsers();
@@ -32,10 +37,12 @@ export default {
 		const handleDelete = async () => {
 			await deleteImage(post.value.filePath);
 			await delDoc();
-			router.push({ name: "ViewPost" });
+			router.push("/posts");
 		};
 
-		return { error, post, ownership, handleDelete };
+		console.log(props.id);
+
+		return { error, post, ownership, handleDelete, props };
 	},
 };
 </script>
