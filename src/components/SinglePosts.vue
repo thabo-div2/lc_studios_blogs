@@ -2,7 +2,9 @@
 	<div>
 		<img class="single_post_img" :src="doc.coverUrl" />
 		<router-link :to="{ name: 'SinglePost', params: { id: doc.id } }"  class="post_title_container">
-			<h3 class="post_title">{{ doc.title }}</h3>
+			<div class="post_heading">
+				<h3 class="post_title">{{ doc.title }}</h3>
+			</div>
 		</router-link>
 		<p>Author: {{ doc.userName }}</p>
 		<p>{{ snippet }}</p>
