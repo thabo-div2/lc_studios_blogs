@@ -28,6 +28,7 @@
 			placeholder="password"
 			v-model="password"
 		/>
+		<input type="file" @change="handleImage" required />
 		<div class="error">{{ error }}</div>
 		<button class="signup_btn">Sign up</button>
 	</form>
@@ -37,26 +38,68 @@
 import { ref } from "@vue/reactivity";
 import useSignup from "../composables/useSignup";
 import { useRouter } from "vue-router";
+import useStorage from "@/composables/useStorage";
+import useCollection from "@/composables/useCollection";
+import { timestamp } from "../firebase/config";
 
 export default {
 	setup() {
 		const { error, signup } = useSignup();
 		const router = useRouter();
+		const { filePath, url, uploadImage } = useStorage();
+		const { addDoc } = useCollection("users");
 
 		// refs
 		const displayName = ref("");
 		const surname = ref("");
 		const email = ref("");
 		const password = ref("");
+		const file = ref(null);
+		const fileError = ref(null);
 
 		const handleSubmit = async () => {
-			await signup(email.value, password.value, displayName.value);
+			if (file.value) {
+				await signup(email.value, password.value, displayName.value);
+				await uploadImage(file.value, "profile");
+				await addDoc({
+					displayName: displayName.value,
+					surname: surname.value,
+					email: email.value,
+					password: password.value,
+					profileUrl: url.value,
+					filePath: filePath.value,
+				});
+			}
+
 			console.log("user signed up");
 
 			router.push("/posts");
 		};
 
-		return { displayName, surname, email, password, handleSubmit, error };
+		const types = ["image/png", "image/jpeg"];
+
+		const handleImage = (e) => {
+			const selected = e.target.files[0];
+			console.log(selected);
+
+			if (selected && types.includes(selected.type)) {
+				file.value = selected;
+				fileError.value = null;
+			} else {
+				file.value = null;
+				fileError.value = "Please select a png or jpg file";
+			}
+		};
+
+		return {
+			displayName,
+			surname,
+			email,
+			password,
+			handleSubmit,
+			error,
+			handleImage,
+		};
 	},
 };
 </script>

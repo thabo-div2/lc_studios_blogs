@@ -49,7 +49,7 @@ export default {
 
 		const handlePost = async () => {
 			if (file.value) {
-				await uploadImage(file.value);
+				await uploadImage(file.value, "banner");
 				console.log("image uploade, url:" + url.value);
 				await addDoc({
 					title: title.value,
