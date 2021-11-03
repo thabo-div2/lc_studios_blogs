@@ -61,7 +61,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style>
 .signup_form {
   display: flex;
   width: 70%;
@@ -77,6 +77,7 @@ export default {
   font-family: "Barlow", sans-serif;
 }
 .signup_btn {
+  background: #7c8ebf;
   border: none;
   width: 35%;
   padding: 9px 0 9px 0;
@@ -84,9 +85,7 @@ export default {
   font-family: "Barlow", sans-serif;
   font-size: 14px;
   font-weight: 600;
-  margin: 15px auto;
   color: white;
-  background-color: #7c8ebf;
 }
 .signup_btn:hover {
   cursor: pointer;
@@ -100,5 +99,7 @@ export default {
 }
 .login_hover_content {
   font-family: "Barlow", sans-serif;
+  font-weight: 500;
+  font-size: 19px;
 }
 </style>
