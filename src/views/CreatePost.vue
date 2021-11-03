@@ -3,12 +3,18 @@
 		<h4>Create Blog Post</h4>
 		<input type="text" placeholder="Title" v-model="title" required />
 		<textarea placeholder="Content..." v-model="content" required></textarea>
+		<select v-model="category" required>
+			<option selected disabled>Select A Category</option>
+			<option>Lifestyle</option>
+			<option>Health</option>
+			<option>Travel</option>
+			<option>Music</option>
+		</select>
 		<input
 			type="text"
 			placeholder="Enter tags here(press enter to add tag)"
 			v-model="tag"
 			@keydown.enter.prevent="handleKey"
-			required
 		/>
 		<label>Upload Banner Image</label>
 		<input @change="handleImage" type="file" />
@@ -37,6 +43,7 @@ export default {
 		const content = ref("");
 		const tag = ref("");
 		const tags = ref([]);
+		const category = ref("");
 		const file = ref(null);
 		const fileError = ref(null);
 
@@ -48,6 +55,7 @@ export default {
 					title: title.value,
 					content: content.value,
 					tags: tags.value,
+					category: category.value,
 					userId: user.value.uid,
 					userName: user.value.displayName,
 					coverUrl: url.value,
@@ -90,6 +98,7 @@ export default {
 			content,
 			tag,
 			tags,
+			category,
 			handlePost,
 			handleImage,
 			handleKey,
@@ -117,8 +126,8 @@ button {
 }
 .create_post {
 	position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 </style>
