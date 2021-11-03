@@ -32,20 +32,24 @@
         </div>
       </div>
     </div>
+    <TagCloud :documents="documents" />
   </div>
 </template>
 
 <script>
 import Signup from "../components/Signup.vue";
 import Login from "../components/Login.vue";
+import TagCloud from "../components/TagCloud.vue";
 import { ref } from "@vue/reactivity";
 
 import Navbar from "../components/Navbar.vue";
 
 export default {
   name: "Home",
-  components: { Signup, Login, Navbar },
+  components: { Signup, Login, Navbar, TagCloud },
   setup() {
+    const { documents } = getCollection("posts");
+
     const showLogin = ref(true);
 
     return { showLogin };

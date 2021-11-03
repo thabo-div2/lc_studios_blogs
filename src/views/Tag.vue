@@ -1,33 +1,30 @@
 <template>
-  <Navbar />
-  <div class="tag">Tag page</div>
+  <!-- <Navbar /> -->
+  <div class="tag">
+    <div v-if="error">{{ error }}</div>
+    <div v-if="documents.length">
+      <BlogPosts :formattedDocuments="postsWithTag" />
+    </div>
+  </div>
 </template>
 
 <script>
-import Navbar from "@/components/Navbar.vue";
+import BlogPosts from "@/components/BlogPosts.vue";
 import getCollection from "@/composables/getCollection";
 import { useRoute } from "vue-router";
 import { computed } from "@vue/reactivity";
 
 export default {
+  components: { BlogPosts },
   setup() {
-    components = { Navbar };
-
     const route = useRoute();
-    const { documents, error } = getCollection();
+    const { error, documents } = getCollection("posts");
 
-    // const postsWithTag = computed(() => {
-    //     return documents.value.filter((p) => p.tags)
-    // })
-  },
+    const postsWithTag = computed(() => {
+      return documents.value.filter((p) => p.tags.includes(route.params.tag));
+    });
 
-  data() {
-    return {
-      books: [],
-    };
-  },
-  firestore: {
-    books: db.collection("books").orderBy("title"),
+    return { error, documents, postsWithTag };
   },
 };
 </script>
