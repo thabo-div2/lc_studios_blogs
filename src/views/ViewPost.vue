@@ -34,12 +34,14 @@ export default {
 <style>
 .single_post_img {
     width: 90vw;
-    height: 100vh;
+    height: 78vh;
     -o-object-fit: cover;
     object-fit: cover;
 }
 .post_page {
-	width: 100%
+	width: 100%;
+	display: flex;
+    justify-content: center;
 }
 .post_title_container {
 	text-decoration: none;

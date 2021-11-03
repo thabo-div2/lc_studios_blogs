@@ -50,11 +50,6 @@ export default {
 <style>
 /* @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300&display=swap'); */
 @import url("https://fonts.googleapis.com/css2?family=Barlow:wght@300;700&display=swap");
-body {
-	/* background: #529C79; */
-	background: #327a77;
-	/* overflow: hidden; */
-}
 .home {
   background: #fefefe;
   width: 70vw;
@@ -68,6 +63,8 @@ body {
 	width: 100vw;
 	height: 100vh;
   overflow: hidden;
+  background: #327a77;
+  position: fixed;
 }
 form {
   background: none;
