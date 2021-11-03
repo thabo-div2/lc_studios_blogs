@@ -11,13 +11,15 @@
 			<button @click="handleClick">Logout</button>
 		</div>
 	</nav> -->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light top_nav">
+	<nav class="navbar navbar-expand-lg navbar-light top_nav">
 		<div class="container-fluid" v-if="user">
 			<div class="first_row">
 				<a class="navbar-brand" href="#">The Blog Cultivaters</a>
 				<form class="d-flex">
 					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-success" type="submit">Search</button>
+					<button class="btn btn-outline-success" type="submit">
+						<i class="fas fa-search"></i>
+					</button>
 				</form>
 			</div>
 			<!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -99,7 +101,7 @@ export default {
 		justify-content: center;
 		/* flex-direction: column; */
 		/* overflow-y: scroll; */
-		margin: 200px 0 0 0;
+		margin: 170px 0 0 0;
 	}
 	.container-fluid {
 		display: flex;
@@ -121,22 +123,57 @@ export default {
 	.d-flex {
 		display: flex!important;
 		flex-direction: row;
+		justify-content: flex-end;
+		background: transparent;
 	}
 	.social_links {
 		display: flex;
     	justify-content: flex-end;
 	}
-	.bg-light {
-		/* --bs-bg-opacity: 0; */
+	.navbar {
+		background-color: #327a77;
 		/* margin: 69px 0 0 0; */
 		/* position: fixed; */
 		position: fixed;
 		width: 100%;
 		top: 0;
 		height: 25vh;
+		/* z-index: 1; */
 	}
-	/* .top_nav {
-		height: 30vh;
-    	width: 100vw;
-	} */
+	.form-control {
+		border: none;
+		border-bottom: solid 1px black;
+		border-radius: 0;
+		width: 44%;
+		background: transparent;
+		padding: 28px 0 0 0;
+	}
+	.form-control:focus {
+		outline: none;
+		/* outline:0; */
+        -webkit-appearance:none;
+        box-shadow: none;
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+		border-bottom: solid 1px black;
+		background: transparent;
+	}
+	.btn {
+		border: none;
+	}
+	.btn:hover {
+		background: none;
+		color: black;
+	}
+	.fas {
+		color: black;
+	}
+	.form-control::placeholder {
+	color: black;
+	/* color: #C9D6FF; */
+	/* color: #a1f2ee; */
+	-webkit-text-stroke: 0.1px black;
+	-webkit-font-smoothing: antialiased;
+	font-family: "Barlow", sans-serif;
+}
 </style>

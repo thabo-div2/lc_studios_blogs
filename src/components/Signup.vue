@@ -1,5 +1,5 @@
 <template>
-	<form @submit.prevent="handleSubmit">
+	<form @submit.prevent="handleSubmit" class="signup_form">
 		<input
 			class="inputs"
 			type="text"
@@ -62,6 +62,13 @@ export default {
 </script>
 
 <style>
+.signup_form {
+	display: flex;
+    width: 70%;
+    margin: 0 0 0 70px;
+    align-items: center;
+	flex-direction: column;
+}
 .signup_subtitle {
 	color: #e3ad1b;
 	/* -webkit-text-stroke: 0.5px black; */
