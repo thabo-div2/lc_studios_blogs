@@ -1,5 +1,9 @@
 <template>
 	<div class="post_container">
+		<div class="user_details">
+			<img src="" alt="" class="user_img">
+			<p class="user_name style">{{ doc.userName }}</p>
+		</div>
 		<img class="single_post_img" :src="doc.coverUrl" />
 		<div class="post_info">
 			<span class="post_time">
@@ -10,11 +14,13 @@
 					<h3 class="post_title style">{{ doc.title }}</h3>
 				</div>
 			</router-link>
-			<p>Author: {{ doc.userName }}</p>
-			<p>{{ snippet }}</p>
-			<div v-for="tag in doc.tags" :key="tag">
-				<p># {{ tag }} ,</p>
+			<p class="style">{{ snippet }}</p>
+			<div class="tags">
+				<div v-for="tag in doc.tags" :key="tag">
+					<p class="tag style"># {{ tag }} ,</p>
+				</div>
 			</div>
+			
 		</div>
 	</div>
 </template>
@@ -36,16 +42,22 @@ export default {
 
 <style>
 	@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;700&family=Mukta:wght@300&display=swap');
-	.post_container {
+	/* .post_container {
 		width: 90vw;
-		height: 100vh;
+		height: 110vh;
 		margin: 0 0 80px 0;
 		background: black;
+	} */
+	.post_container {
+		width: 90vw;
+		background: black;
+		margin: 0 0 4% 0;
 	}
 	.post_info {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		background: black;
 	}
 	.post_time {
 		height: 100px;
@@ -63,6 +75,7 @@ export default {
 		width: 90%;
 		font-family: 'Mukta', sans-serif;
 		color: black;
+		font-weight: 600;
 	}
 	.post_title {
 		font-weight: 900;
@@ -70,5 +83,26 @@ export default {
 	.style {
 		font-family: 'Mukta', sans-serif;
 		color: #FFFFFF;
+	}
+	.user_details {
+		display: flex;
+		flex-direction: row;
+		align-items: flex-end;
+	}
+	.user_img {
+		width: 65px;
+		height: 65px;
+		background: #FFFFFF;
+		border-radius: 50px;
+		border: none;
+		margin: 6px 30px 0 20px;
+	}
+	.user_name {
+    	font-size: 22px;
+	}
+	.tags {
+		display: flex;
+		flex-direction: row;
+		margin: -16px 0 0 0;
 	}
 </style>

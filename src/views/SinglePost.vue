@@ -1,6 +1,9 @@
 <template>
 	<div v-if="error">{{ error }}</div>
-	<div v-if="post">
+	<div class="view_post_container" v-if="post">
+		<router-link :to="{ name: 'ViewPost' }" class="arrow_container">
+			<i class="fas fa-arrow-left back_arrow"></i>
+		</router-link>
 		<h3>{{ post.title }}</h3>
 		<img :src="post.coverUrl" />
 		<p>{{ post.content }}</p>
@@ -40,4 +43,19 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+	.view_post_container {
+		margin: 156px 0 0 0;
+	}
+	.arrow_container {
+		text-decoration: none;
+	}
+	.back_arrow {
+		display: flex;
+		margin: 0 0 0 40px;
+		padding: 15px 0 0 0;
+		font-size: 31px;
+		text-decoration: none;
+		position: fixed;
+	}
+</style>
