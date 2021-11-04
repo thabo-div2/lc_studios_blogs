@@ -77,10 +77,14 @@ export default {
     flex-direction: row;
     /* background: #FFFFFF; */
 	width: 26vw;
-    border-bottom: solid 1px black;
+    /* border-bottom: solid 1px black; */
     margin: 0 0 25px 0;
     /* border-radius: 50px; */
     overflow: hidden;
+}
+a:hover {
+    color: black;
+    text-decoration: none;
 }
 .create_img {
     background: black;
@@ -88,14 +92,18 @@ export default {
     height: 65px;
     border-radius: 50px;
     border: none;
-    margin: 0 55px 7px 30px;
+    margin: 0 20px 13px 30px;
 }
 .create_post_link {
     display: flex;
     align-items: flex-end;
     text-decoration: none;
-    color: black;
+    color: #515050;
     font-family: 'Mukta', sans-serif;
     font-size: 20px;
+    border-bottom: solid 1px black;
+    padding: 0 0 15px 0;
+    width: 45%;
+    justify-content: flex-end;
 }
 </style>
