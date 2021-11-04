@@ -40,8 +40,6 @@ import useSignup from "../composables/useSignup";
 import { useRouter } from "vue-router";
 import useStorage from "@/composables/useStorage";
 import useCollection from "@/composables/useCollection";
-import { timestamp } from "../firebase/config";
-import { projectStorage } from "@/firebase/config";
 
 export default {
 	setup() {
@@ -61,8 +59,14 @@ export default {
 		const handleSubmit = async () => {
 			if (file.value) {
 				await signup(email.value, password.value, displayName.value, url.value);
-				console.log(filePath, url);
 				await uploadImage(file.value, "profile");
+				await addDoc({
+					displayName: displayName.value,
+					surname: surname.value,
+					email: email.value,
+					profileUrl: url.value,
+					filePath: filePath.value,
+				});
 			}
 
 			console.log("user signed up");
