@@ -43,7 +43,7 @@
 						<a class="nav-link" href="#">Travel</a>
 						</li>
 						<li class="nav-item">
-						<a class="nav-link" href="#"><router-link :to="{ name: 'CreatePost' }">Create a Post</router-link></a>
+						<a class="nav-link" href="#">Music</a>
 						</li>
 						<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -101,7 +101,9 @@ export default {
 		justify-content: center;
 		/* flex-direction: column; */
 		/* overflow-y: scroll; */
-		margin: 170px 0 0 0;
+		margin: 156px 0 0 0; 
+		background: #F8F8F8;
+		/* margin: 170px 0 0 0 */
 	}
 	.container-fluid {
 		display: flex;
@@ -131,7 +133,8 @@ export default {
     	justify-content: flex-end;
 	}
 	.navbar {
-		background-color: #327a77;
+		/* background-color: #327a77; */
+		background-color: #F8F8F8;
 		/* margin: 69px 0 0 0; */
 		/* position: fixed; */
 		position: fixed;
@@ -175,5 +178,9 @@ export default {
 	-webkit-text-stroke: 0.1px black;
 	-webkit-font-smoothing: antialiased;
 	font-family: "Barlow", sans-serif;
+}
+.navbar-brand {
+	font-size: 30px;
+	font-family: 'Mukta', sans-serif;
 }
 </style>
