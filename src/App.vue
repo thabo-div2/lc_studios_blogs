@@ -1,30 +1,65 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <h1>{{ title }}</h1>
+  <p> Click me.. </p>
+
+  <div v-if="showModal">
+    <Modal theme="" @close="toggleModal">
+      <template v-slot:links>
+        <a href="#">Logout</a>
+        <a href="#">Blogs</a>
+      </template>
+
+      <h1> Your Profile </h1>
+      <p> User Content </p>
+    </Modal>
+
+    
+
   </div>
-  <router-view/>
+  <button @click="toggleModal">View Profile</button>
 </template>
 
-<style lang="scss">
+
+
+<script>
+
+import Modal from './components/Modal.vue'
+
+
+export default {
+  name: 'App',
+  components: { Modal },
+  data() {
+    return {
+      title: 'User Profile',
+      header: 'User profile',
+      text: "User content",
+      showModal: false,
+      
+    }
+  },
+  methods: {
+    toggleModal(){
+        this.showModal = !this.showModal;
+      }
+    }
+  }
+
+
+</script>
+
+<style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  margin-top: 60px;
 }
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+h1{
+  border-bottom: 1px solid #ddd;
+  display: inline-block;
+  padding-bottom: 10px;
 }
 </style>
