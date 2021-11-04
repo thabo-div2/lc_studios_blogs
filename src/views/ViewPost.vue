@@ -37,9 +37,15 @@ export default {
 
 <style>
 .post_page_container {
-	display: flex;
+    display: flex;
+    justify-content: center;
 	flex-direction: column;
 	align-items: center;
+    /* flex-direction: column; */
+    /* overflow-y: scroll; */
+    margin: 200px 0 0 0; 
+    background: #F8F8F8;
+    /* margin: 170px 0 0 0 */
 }
 /* .single_post_img {
     width: 90vw;
