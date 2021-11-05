@@ -4,10 +4,19 @@
 		<router-link :to="{ name: 'ViewPost' }" class="arrow_container">
 			<i class="fas fa-arrow-left back_arrow"></i>
 		</router-link>
-		<h3>{{ post.title }}</h3>
-		<img :src="post.coverUrl" />
-		<p>{{ post.content }}</p>
 		<button v-if="ownership" @click="handleDelete">Delete Post</button>
+		<div class="modal_content">
+			<img class="postImg" :src="post.coverUrl" />
+			<h3>{{ post.title }}</h3>
+			<p>{{ post.content }}</p>
+		</div>
+		<div class="modal-body">
+			<h5>Popover in a modal</h5>
+			<p>This <a href="#" role="button" class="btn btn-secondary popover-test" title="Popover title" data-content="Popover body content is set in this attribute.">button</a> triggers a popover on click.</p>
+			<hr>
+			<h5>Tooltips in a modal</h5>
+			<p><a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> have tooltips on hover.</p>
+		</div>
 	</div>
 	<CommentsWindow :doc="props.id" />
 	<CommentsForm :doc="props.id" />
@@ -52,7 +61,7 @@ export default {
 
 <style>
 	.view_post_container {
-		margin: 156px 0 0 0;
+		margin: 193px 0 0 0;
 	}
 	.arrow_container {
 		text-decoration: none;
@@ -64,5 +73,10 @@ export default {
 		font-size: 31px;
 		text-decoration: none;
 		position: fixed;
+	}
+	.postImg {
+		width: 60vw;
+		height: 74vh;
+		object-fit: contain;
 	}
 </style>
