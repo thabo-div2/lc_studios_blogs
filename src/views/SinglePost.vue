@@ -29,12 +29,13 @@ import getSingleCollection from "@/composables/getSingleCollection";
 import getUsers from "@/composables/getUsers";
 import useStorage from "@/composables/useStorage";
 import CommentsForm from "@/components/CommentsForm.vue";
+import UpdateModal from "@/components/UpdateModal.vue";
 import { computed } from "@vue/reactivity";
 import CommentsWindow from "@/components/CommentsWindow.vue";
 
 export default {
 	props: ["id"],
-	components: { CommentsForm, CommentsWindow },
+	components: { CommentsForm, CommentsWindow, UpdateModal },
 	setup(props) {
 		const { error, post } = getSingleCollection("posts", props.id);
 		const { user } = getUsers();

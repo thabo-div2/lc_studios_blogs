@@ -42,7 +42,6 @@ import useSignup from "../composables/useSignup";
 import { useRouter } from "vue-router";
 import useStorage from "@/composables/useStorage";
 import useCollection from "@/composables/useCollection";
-import { timestamp } from "../firebase/config";
 
 export default {
 	setup() {
@@ -61,21 +60,20 @@ export default {
 
 		const handleSubmit = async () => {
 			if (file.value) {
+				console.log(`url value = ${url.value}`);
 				await signup(email.value, password.value, displayName.value);
 				await uploadImage(file.value, "profile");
 				await addDoc({
 					displayName: displayName.value,
 					surname: surname.value,
 					email: email.value,
-					password: password.value,
 					profileUrl: url.value,
 					filePath: filePath.value,
 				});
+				console.log("user signed up");
+
+				router.push("/posts");
 			}
-
-			console.log("user signed up");
-
-			router.push("/posts");
 		};
 
 		const types = ["image/png", "image/jpeg"];
@@ -109,9 +107,9 @@ export default {
 <style>
 .signup_form {
 	display: flex;
-    width: 70%;
-    margin: 0 0 0 70px;
-    align-items: center;
+	width: 70%;
+	margin: 0 0 0 70px;
+	align-items: center;
 	flex-direction: column;
 }
 .signup_subtitle {

@@ -49,7 +49,7 @@ export default {
 
 		const handlePost = async () => {
 			if (file.value) {
-				await uploadImage(file.value, "banner");
+				await uploadImage(file.value, "banners");
 				console.log("image uploade, url:" + url.value);
 				await addDoc({
 					title: title.value,
@@ -129,5 +129,7 @@ button {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	display: flex;
+	flex-direction: column;
 }
 </style>
