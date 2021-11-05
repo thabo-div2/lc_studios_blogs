@@ -28,7 +28,9 @@
 			placeholder="password"
 			v-model="password"
 		/>
-		<input type="file" @change="handleImage" required />
+		<div class="choose_img">
+			<input class="inputs" type="file" @change="handleImage" required />
+		</div>
 		<div class="error">{{ error }}</div>
 		<button class="signup_btn">Sign up</button>
 	</form>
@@ -142,5 +144,9 @@ export default {
 	font-family: "Barlow", sans-serif;
 	font-weight: 500;
 	font-size: 19px;
+}
+.choose_img {
+	background: #F8F8F8;
+	border: solid 1px black;
 }
 </style>

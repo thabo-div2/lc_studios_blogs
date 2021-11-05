@@ -14,10 +14,10 @@
 	<nav class="navbar navbar-expand-lg navbar-light top_nav">
 		<div class="container-fluid" v-if="user">
 			<div class="first_row">
-				<a class="navbar-brand" href="#">The Blog Cultivaters</a>
+				<a class="navbar_brand" href="/posts/">The Blog Cultivaters</a>
 				<form class="d-flex">
 					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-success" type="submit">
+					<button class="btn" type="submit">
 						<i class="fas fa-search"></i>
 					</button>
 				</form>
@@ -30,7 +30,7 @@
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item">
 						<a class="nav-link active" aria-current="page" href="#">
-							<router-link :to="{ name: 'ViewPost' }">All</router-link>
+							<router-link :to="{ name: 'ViewPost' }" class="nav_link">All</router-link>
 						</a>
 						</li>
 						<li class="nav-item">
@@ -50,10 +50,10 @@
 							Info
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="#"><p>hey there... {{ user.displayName }}</p></a></li>
-							<li><a class="dropdown-item" href="#"><p class="email">Currently logged in as... {{ user.email }}</p></a></li>
+							<li><a class="dropdown-item style" href="#"><p>hey there... {{ user.displayName }}</p></a></li>
+							<li><a class="dropdown-item style" href="#"><p class="email">Currently logged in as... {{ user.email }}</p></a></li>
 							<li><hr class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="#"><button @click="handleClick">Logout</button></a></li>
+							<li><a class="dropdown_item style" href="#"><button class="logout_btn" @click="handleClick">Logout</button></a></li>
 						</ul>
 						</li>
 						<!-- <li class="nav-item">
@@ -62,9 +62,9 @@
 					</ul>
 				</div>
 				<div class="collapse navbar-collapse social_links" id="navbarSupportedContent">
-					<i>1</i>
-					<i>2</i>
-					<i>3</i>
+					<i class="fab fa-facebook-f social_icon"></i>
+					<i class="fab fa-instagram social_icon"></i>
+					<i class="fab fa-linkedin-in social_icon"></i>
 				</div>
 			</div>
 		</div>
@@ -179,8 +179,53 @@ export default {
 	-webkit-font-smoothing: antialiased;
 	font-family: "Barlow", sans-serif;
 }
-.navbar-brand {
+.navbar_brand {
 	font-size: 30px;
 	font-family: 'Mukta', sans-serif;
+	color: #517fff;
+}
+.navbar_brand:hover {
+	color: #517fff;
+}
+.social_icon {
+	font-size: 16px;
+    margin: 0 0 0 15px;
+}
+.nav_link {
+	color: #7C7C7C;
+}
+.nav_link:hover {
+	color: #515050;
+}
+.dropdown_menu {
+	background: black;
+	border: solid 1px;
+}
+.dropdown-item:active {
+    color: #fff;
+    text-decoration: none;
+    background-color: black;
+}
+.dropdown_item {
+    display: block;
+    width: 100%;
+    padding: .25rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}
+.logout_btn {
+  background: #f7f5f0;
+  border: none;
+  width: 35%;
+  padding: 9px 0 9px 0;
+  border-radius: 15px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #7C7C7C;
 }
 </style>
