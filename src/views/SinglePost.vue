@@ -10,7 +10,7 @@
 	</div>
 	<button v-if="ownership" @click="handleDelete">Delete Post</button>
 	<button @click="toggleModal">Update Post</button>
-	<UpdateModal @close="toggleModal" :modalActive="modalActive">
+	<UpdateModal :modalActive="modalActive">
 		<div class="modal-content">
 			<form>
 				<h1>Hello</h1>
@@ -24,7 +24,7 @@
 					<option></option>
 				</select>
 				<button>Update</button>
-				<button>Close</button>
+				<button @click.prevent="toggleModal">Close</button>
 			</form>
 		</div>
 	</UpdateModal>
