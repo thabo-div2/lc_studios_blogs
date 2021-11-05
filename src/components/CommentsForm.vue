@@ -35,8 +35,8 @@ export default {
 			if (!error.value) {
 				message.value = "";
 			}
+			return { message, handleSubmit, error };
 		};
-		return { message, handleSubmit, error };
 	},
 };
 </script>
