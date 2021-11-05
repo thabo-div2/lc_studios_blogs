@@ -44,11 +44,11 @@ export default {
 	align-items: center;
 }
 /* .single_post_img {
-    width: 90vw;
-    height: 75vh;
-    -o-object-fit: cover;
-    object-fit: cover;
-    margin: 7px 0 0 0;
+	width: 90vw;
+	height: 75vh;
+	-o-object-fit: cover;
+	object-fit: cover;
+	margin: 7px 0 0 0;
 } */
 .single_post_img {
 	width: 100%;
