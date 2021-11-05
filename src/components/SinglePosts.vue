@@ -49,7 +49,8 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Barlow:wght@300;700&family=Mukta:wght@300&display=swap");
 .post_container {
 	width: 90vw;
-	margin: 0 0 3% 0;
+	height: 100%;
+	margin: 0 0 80px 0;
 	background: black;
 }
 .post_info {

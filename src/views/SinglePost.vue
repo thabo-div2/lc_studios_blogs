@@ -4,13 +4,30 @@
 		<router-link :to="{ name: 'ViewPost' }" class="arrow_container">
 			<i class="fas fa-arrow-left back_arrow"></i>
 		</router-link>
-		<button v-if="ownership" @click="handleDelete">Delete Post</button>
-		<div class="modal_content">
-			<img class="postImg" :src="post.coverUrl" />
-			<h3>{{ post.title }}</h3>
-			<p>{{ post.content }}</p>
-		</div>
+		<h3>{{ post.title }}</h3>
+		<img :src="post.coverUrl" />
+		<p>{{ post.content }}</p>
 	</div>
+	<button v-if="ownership" @click="handleDelete">Delete Post</button>
+	<button @click="toggleModal">Update Post</button>
+	<UpdateModal @close="toggleModal" :modalActive="modalActive">
+		<div class="modal-content">
+			<form>
+				<h1>Hello</h1>
+				<input type="text" />
+				<input type="text" />
+				<input type="text" />
+				<select>
+					<option></option>
+					<option></option>
+					<option></option>
+					<option></option>
+				</select>
+				<button>Update</button>
+				<button>Close</button>
+			</form>
+		</div>
+	</UpdateModal>
 	<CommentsWindow :doc="props.id" />
 	<CommentsForm :doc="props.id" />
 </template>
@@ -22,19 +39,20 @@ import getSingleCollection from "@/composables/getSingleCollection";
 import getUsers from "@/composables/getUsers";
 import useStorage from "@/composables/useStorage";
 import CommentsForm from "@/components/CommentsForm.vue";
-import UpdateModal from "@/components/UpdateModal.vue";
-import { computed } from "@vue/reactivity";
+import UpdateModal from "../components/UpdateModal.vue";
+import { computed, ref } from "@vue/reactivity";
 import CommentsWindow from "@/components/CommentsWindow.vue";
 
 export default {
-	props: ["id"],
+	props: ["id", "posts"],
 	components: { CommentsForm, CommentsWindow, UpdateModal },
 	setup(props) {
 		const { error, post } = getSingleCollection("posts", props.id);
 		const { user } = getUsers();
 		const { deleteImage } = useStorage();
-		const { delDoc } = useSingleCollection("posts", props.id);
+		const { delDoc, updateDoc } = useSingleCollection("posts", props.id);
 		const router = useRouter();
+		let modalActive = ref(false);
 
 		const ownership = computed(() => {
 			return post.value && user.value && user.value.uid == post.value.userId;
@@ -46,31 +64,43 @@ export default {
 			router.push("/posts");
 		};
 
+		const handleUpdate = async () => {
+			await updateDoc({});
+		};
+
+		const toggleModal = () => {
+			modalActive.value = !modalActive.value;
+			console.log(modalActive.value);
+		};
+
 		console.log(props.id);
 
-		return { error, post, ownership, handleDelete, props };
+		return {
+			error,
+			post,
+			ownership,
+			handleDelete,
+			props,
+			modalActive,
+			toggleModal,
+		};
 	},
 };
 </script>
 
 <style>
-	.view_post_container {
-		margin: 193px 0 0 0;
-	}
-	.arrow_container {
-		text-decoration: none;
-	}
-	.back_arrow {
-		display: flex;
-		margin: 0 0 0 40px;
-		padding: 15px 0 0 0;
-		font-size: 31px;
-		text-decoration: none;
-		position: fixed;
-	}
-	.postImg {
-		width: 60vw;
-		height: 74vh;
-		object-fit: contain;
-	}
+.view_post_container {
+	margin: 156px 0 0 0;
+}
+.arrow_container {
+	text-decoration: none;
+}
+.back_arrow {
+	display: flex;
+	margin: 0 0 0 40px;
+	padding: 15px 0 0 0;
+	font-size: 31px;
+	text-decoration: none;
+	position: fixed;
+}
 </style>

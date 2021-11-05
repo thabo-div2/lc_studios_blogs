@@ -58,7 +58,7 @@ export default {
 } */
 .single_post_img {
 	width: 100%;
-	/* height: 75vh; */
+	height: 75vh;
 	-o-object-fit: cover;
 	object-fit: contain;
 	margin: 7px 0 0 0;

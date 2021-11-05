@@ -1,19 +1,24 @@
 <template>
-	<transition name="modal-animation">
-		<div v-show="modalActive" class="modal">
-			<transition name="modal-animation-inner">
-				<div v-show="modalActive" class="modal-inner">
-					<slot />
-				</div>
-			</transition>
+	<div v-show="props.modalActive" class="bg">
+		<div v-show="props.modalActive" class="modal-inner">
+			<slot></slot>
 		</div>
-	</transition>
+	</div>
 </template>
 
 <script>
 export default {
 	props: ["modalActive"],
+	setup(props) {
+		console.log("prop", props.modalActive);
+
+		return { props };
+	},
 };
 </script>
 
-<style></style>
+<style>
+.modal {
+	background: black;
+}
+</style>

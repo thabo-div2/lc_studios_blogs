@@ -18,6 +18,7 @@ import getCollection from "@/composables/getCollection";
 export default {
 	props: ["doc"],
 	setup(props) {
+		console.log(props.doc);
 		const message = ref("");
 		const { user } = getUsers();
 		const { addDoc, error } = useCollection("comments");
