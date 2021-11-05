@@ -50,8 +50,8 @@
 							Info
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item style" href="#"><p>hey there... {{ user.displayName }}</p></a></li>
-							<li><a class="dropdown-item style" href="#"><p class="email">Currently logged in as... {{ user.email }}</p></a></li>
+							<li><a class="dropdown-item style" href="#"><p>hey there <b>{{ user.displayName }}</b></p></a></li>
+							<li><a class="dropdown-item style" href="#"><p class="email">Currently logged in as <b>{{ user.email }}</b></p></a></li>
 							<li><hr class="dropdown-divider"></li>
 							<li><a class="dropdown_item style" href="#"><button class="logout_btn" @click="handleClick">Logout</button></a></li>
 						</ul>
@@ -62,9 +62,15 @@
 					</ul>
 				</div>
 				<div class="collapse navbar-collapse social_links" id="navbarSupportedContent">
-					<i class="fab fa-facebook-f social_icon"></i>
-					<i class="fab fa-instagram social_icon"></i>
-					<i class="fab fa-linkedin-in social_icon"></i>
+					<span class="icon">
+						<i class="fab fa-facebook-f social_icon"></i>
+					</span>
+					<span class="icon">
+						<i class="fab fa-instagram social_icon"></i>
+					</span>
+					<span class="icon">
+						<i class="fab fa-linkedin-in social_icon"></i>
+					</span>
 				</div>
 			</div>
 		</div>
@@ -188,8 +194,22 @@ export default {
 	color: #517fff;
 }
 .social_icon {
-	font-size: 16px;
-    margin: 0 0 0 15px;
+    font-size: 16px;
+    margin: 0 0 0 5px;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.social_icon:hover {
+	/* height: 30px;
+    width: 30px; */
+    background: #e3ad1b;
+    margin: 0 0 0 5px;
+    border-radius: 15px;
+	transform: translateX(0);
+    transition: 1s 0.2s ease;
 }
 .nav_link {
 	color: #7C7C7C;
@@ -197,7 +217,7 @@ export default {
 .nav_link:hover {
 	color: #515050;
 }
-.dropdown_menu {
+.dropdown-menu {
 	background: black;
 	border: solid 1px;
 }
