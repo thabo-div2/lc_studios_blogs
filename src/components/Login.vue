@@ -58,10 +58,10 @@ export default {
   border-radius: 20px;
 }
 .home_content {
-	display: flex;
-	justify-content: flex-end;
-	width: 100vw;
-	height: 100vh;
+  display: flex;
+  justify-content: flex-end;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
   background: #327a77;
   position: fixed;
@@ -119,28 +119,29 @@ form {
   /* z-index: 1; */
 }
 .form_image::before {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: -6%;
-    z-index: 0;
-    right: 102%;
-    content: "";
-    background-color: transparent;
-    background-image: radial-gradient(#fff 10%, transparent 11%), radial-gradient(#fff 10%, transparent 11%);
-    background-size: 60px 60px;
-    background-position: 0 0, 30px 30px;
-    background-repeat: repeat;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: -6%;
+  z-index: 0;
+  right: 102%;
+  content: "";
+  background-color: transparent;
+  background-image: radial-gradient(#fff 10%, transparent 11%),
+    radial-gradient(#fff 10%, transparent 11%);
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
+  background-repeat: repeat;
 }
 .form_content {
-    background: white;
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    width: 55%;
-    align-items: center;
-    border-radius: 0 20px 20px 0;
-    /* z-index: 1; */
+  background: white;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 55%;
+  align-items: center;
+  border-radius: 0 20px 20px 0;
+  /* z-index: 1; */
 }
 .form_content::before {
   width: 100%;

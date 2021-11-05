@@ -113,37 +113,37 @@ export default {
 	flex-direction: column;
 }
 .signup_subtitle {
-	color: #e3ad1b;
-	/* -webkit-text-stroke: 0.5px black; */
-	/* -webkit-font-smoothing: antialiased; */
-	font-size: 28px;
-	font-family: "Barlow", sans-serif;
+  color: #e3ad1b;
+  /* -webkit-text-stroke: 0.5px black; */
+  /* -webkit-font-smoothing: antialiased; */
+  font-size: 28px;
+  font-family: "Barlow", sans-serif;
 }
 .signup_btn {
-	background: #7c8ebf;
-	border: none;
-	width: 35%;
-	padding: 9px 0 9px 0;
-	border-radius: 15px;
-	font-family: "Barlow", sans-serif;
-	font-size: 14px;
-	font-weight: 600;
-	color: white;
+  background: #7c8ebf;
+  border: none;
+  width: 35%;
+  padding: 9px 0 9px 0;
+  border-radius: 15px;
+  font-family: "Barlow", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
 }
 .signup_btn:hover {
-	cursor: pointer;
+  cursor: pointer;
 }
 .login_hover {
-	color: #e3ad1b;
-	cursor: pointer;
-	font-family: "Barlow", sans-serif;
-	font-weight: 600;
-	font-size: 19px;
+  color: #e3ad1b;
+  cursor: pointer;
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  font-size: 19px;
 }
 .login_hover_content {
-	font-family: "Barlow", sans-serif;
-	font-weight: 500;
-	font-size: 19px;
+  font-family: "Barlow", sans-serif;
+  font-weight: 500;
+  font-size: 19px;
 }
 .choose_img {
 	background: #F8F8F8;
