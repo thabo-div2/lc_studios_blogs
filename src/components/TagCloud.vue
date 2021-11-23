@@ -1,6 +1,6 @@
 <template>
   <div class="tag-cloud">
-    <h3>tags</h3>
+    <h3>Tags</h3>
     <div v-for="tag in tags" :key="tag">
       <router-link :to="{ name: 'Tag', params: { tag: tag } }">
         #{{ tag }}
@@ -10,17 +10,17 @@
 </template>
 
 <script>
-import useTags from "@/composables/useTags";
+import useTags from "../composables/useTags";
 
 export default {
-  props: ["documents"],
-
+  // i
   setup(props) {
-    const { tags } = useTags(props.documents);
+    const { tags } = useTags(props.posts);
 
     return { tags };
   },
+
+  props: ["posts"],
 };
 </script>
-
 <style></style>

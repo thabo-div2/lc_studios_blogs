@@ -40,14 +40,14 @@
 <script>
 import Signup from "../components/Signup.vue";
 import Login from "../components/Login.vue";
-import TagCloud from "../components/TagCloud.vue";
+import getCollection from "@/composables/getCollection";
 import { ref } from "@vue/reactivity";
 
 import Navbar from "../components/Navbar.vue";
 
 export default {
   name: "Home",
-  components: { Signup, Login, Navbar, TagCloud },
+  components: { Signup, Login, Navbar },
   setup() {
     const { documents } = getCollection("posts");
 
