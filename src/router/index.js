@@ -1,29 +1,30 @@
-import { createRouter, createWebHistory } from "vue-router";
-import { projectAuth } from "../firebase/config";
-import Home from "../views/Home.vue";
-import CreatePost from "../views/CreatePost.vue";
-import ViewPost from "../views/ViewPost.vue";
-import SinglePost from "../views/SinglePost.vue";
-import Tag from "../views/Tag.vue";
+import { createRouter, createWebHistory } from "vue-router"
+import { projectAuth } from "../firebase/config"
+import Home from "../views/Home.vue"
+import CreatePost from "../views/CreatePost.vue"
+import ViewPost from "../views/ViewPost.vue"
+import SinglePost from "../views/SinglePost.vue"
+import Tag from "../views/Tag.vue"
+import Category from "../views/Lifestyle.vue"
 
 // auth guard
 const requireAuth = (to, from, next) => {
-  let user = projectAuth.currentUser;
+  let user = projectAuth.currentUser
   if (!user) {
-    next({ name: "Home" });
+    next({ name: "Home" })
   } else {
-    next();
+    next()
   }
-};
+}
 
 const requireNoAuth = (to, from, next) => {
-  let user = projectAuth.currentUser;
+  let user = projectAuth.currentUser
   if (user) {
-    next({ name: "ViewPost" });
+    next({ name: "ViewPost" })
   } else {
-    next();
+    next()
   }
-};
+}
 
 const routes = [
   {
@@ -54,11 +55,16 @@ const routes = [
     name: "Tag",
     component: Tag,
   },
-];
+  {
+    path: "/category/:category",
+    name: "Category",
+    component: Category,
+  },
+]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
-});
+})
 
-export default router;
+export default router

@@ -40,8 +40,14 @@
                 >
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Lifestyle</a>
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="#"
+                ><router-link
+                  :to="{ name: 'Category', params: { category: 'Lifestyle' } }"
+                  class="nav_link"
+                  >Lifestyle</router-link
+                ></a
+              >
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Health</a>
@@ -51,7 +57,20 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Music</a>
-            </li>
+            </li> -->
+
+            <!-- Category filters -->
+            <a
+              v-for="category in categories"
+              :key="category"
+              class="nav-item nav-link"
+            >
+              <router-link
+                :to="{ name: 'Category', params: { category: category } }"
+              >
+                {{ category }}
+              </router-link>
+            </a>
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -119,6 +138,12 @@ import { useRouter } from "vue-router"
 
 export default {
   setup() {
+    const categories = {
+      1: "Lifestyle",
+      2: "Health",
+      3: "Travel",
+      4: "Music",
+    }
     const { user } = getUsers()
     const { logout, error } = useLogout()
     const router = useRouter()
@@ -131,7 +156,7 @@ export default {
       }
     }
 
-    return { handleClick, user }
+    return { handleClick, user, categories }
   },
 }
 </script>

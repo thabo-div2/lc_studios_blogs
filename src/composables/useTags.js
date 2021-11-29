@@ -1,16 +1,15 @@
-import { ref } from "vue";
-import { watchEffect } from "@vue/runtime-core";
+import { ref } from "vue"
 
 const useTags = (posts) => {
-  const tags = ref([]);
-  const tagSet = new Set();
+  const tags = ref([])
+  const tagSet = new Set()
 
   posts.forEach((item) => {
-    item.tags.forEach((tag) => tagSet.add(tag));
-  });
+    item.tags.forEach((tag) => tagSet.add(tag))
+  })
 
-  tags.value = [...tagSet];
-  return { tags };
-};
+  tags.value = [...tagSet]
+  return { tags }
+}
 
-export default useTags;
+export default useTags
