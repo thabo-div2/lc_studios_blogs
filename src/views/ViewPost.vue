@@ -1,45 +1,113 @@
 <template>
   <div class="post_page_container">
-    <div>
-      <BlogPosts v-if="showPosts" :formattedDocuments="formattedDocuments" />
+    <div class="create_post_container">
+      <img src="" alt="" class="create_img" />
+      <router-link :to="{ name: 'CreatePost' }" class="create_post_link"
+        >Create a Post</router-link
+      >
     </div>
-    <div>
-      <TagCloud :posts="formattedDocuments" />
+    <div class="post_page">
+      <BlogPosts v-if="showPosts" :formattedDocuments="formattedDocuments" />
     </div>
   </div>
 </template>
 
 <script>
-import BlogPosts from "@/components/BlogPosts.vue";
-import getCollection from "@/composables/getCollection";
-import TagCloud from "@/components/TagCloud.vue";
-import { formatDistanceToNow } from "date-fns";
-import { computed } from "vue";
+import BlogPosts from "@/components/BlogPosts.vue"
+import getCollection from "@/composables/getCollection"
+import TagCloud from "@/components/TagCloud.vue"
+import { formatDistanceToNow } from "date-fns"
+import { computed } from "vue"
 
 export default {
   components: { BlogPosts, TagCloud },
   setup() {
-    const { error, documents, showPosts } = getCollection("posts");
+    const { error, documents, showPosts } = getCollection("posts")
 
     const formattedDocuments = computed(() => {
       if (documents.value) {
         return documents.value.map((doc) => {
-          let time = formatDistanceToNow(doc.createdAt.toDate());
-          return { ...doc, createdAt: time };
-        });
-        console.log(time);
+          let time = formatDistanceToNow(doc.createdAt.toDate())
+          return { ...doc, createdAt: time }
+        })
+        console.log(time)
       }
-    });
+    })
 
-    return { error, documents, formattedDocuments, showPosts };
+    return { error, documents, formattedDocuments, showPosts }
   },
-};
+}
 </script>
 
 <style>
-img {
-  width: 300px;
-  height: 300px;
-  object-fit: cover;
+.post_page_container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  /* flex-direction: column; */
+  /* overflow-y: scroll; */
+  margin: 200px 0 0 0;
+  background: #f8f8f8;
+  /* margin: 170px 0 0 0 */
+}
+/* .single_post_img {
+	width: 90vw;
+	height: 75vh;
+	-o-object-fit: cover;
+	object-fit: cover;
+	margin: 7px 0 0 0;
+} */
+.single_post_img {
+  width: 100%;
+  height: 75vh;
+  -o-object-fit: cover;
+  object-fit: contain;
+  margin: 7px 0 0 0;
+}
+.post_page {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.post_title_container {
+  text-decoration: none;
+  /* position: absolute; */
+  /* bottom: -16%; */
+  /* left: 50%; */
+}
+.create_post_container {
+  display: flex;
+  flex-direction: row;
+  /* background: #FFFFFF; */
+  width: 26vw;
+  /* border-bottom: solid 1px black; */
+  margin: 0 0 25px 0;
+  /* border-radius: 50px; */
+  overflow: hidden;
+}
+a:hover {
+  color: black;
+  text-decoration: none;
+}
+.create_img {
+  background: black;
+  width: 65px;
+  height: 65px;
+  border-radius: 50px;
+  border: none;
+  margin: 0 20px 13px 30px;
+}
+.create_post_link {
+  display: flex;
+  align-items: flex-end;
+  text-decoration: none;
+  color: #515050;
+  font-family: "Mukta", sans-serif;
+  font-size: 20px;
+  border-bottom: solid 1px black;
+  padding: 0 0 15px 0;
+  width: 45%;
+  justify-content: flex-end;
 }
 </style>

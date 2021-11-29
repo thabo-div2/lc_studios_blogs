@@ -9,8 +9,8 @@ const useStorage = () => {
 	const url = ref(null);
 	const filePath = ref(null);
 
-	const uploadImage = async (file) => {
-		filePath.value = `banners/${user.value.uid}/${file.name}`;
+	const uploadImage = async (file, folder) => {
+		filePath.value = `${folder}/${user.value.uid}/${file.name}`;
 		const storageRef = projectStorage.ref(filePath.value);
 
 		try {
