@@ -6,18 +6,19 @@
         >Create a Post</router-link
       >
     </div>
-    <div class="post_page">
+    <div class="post_page" v-if="documents.length">
       <BlogPosts v-if="showPosts" :formattedDocuments="formattedDocuments" />
+      <TagCloud :posts="documents" />
     </div>
   </div>
 </template>
 
 <script>
-import BlogPosts from "@/components/BlogPosts.vue"
 import getCollection from "@/composables/getCollection"
-import TagCloud from "@/components/TagCloud.vue"
+import BlogPosts from "@/components/BlogPosts.vue"
 import { formatDistanceToNow } from "date-fns"
-import { computed } from "vue"
+import { computed } from "@vue/reactivity"
+import TagCloud from "@/components/TagCloud.vue"
 
 export default {
   components: { BlogPosts, TagCloud },
@@ -30,7 +31,6 @@ export default {
           let time = formatDistanceToNow(doc.createdAt.toDate())
           return { ...doc, createdAt: time }
         })
-        console.log(time)
       }
     })
 
@@ -45,19 +45,9 @@ export default {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  /* flex-direction: column; */
-  /* overflow-y: scroll; */
   margin: 200px 0 0 0;
   background: #f8f8f8;
-  /* margin: 170px 0 0 0 */
 }
-/* .single_post_img {
-	width: 90vw;
-	height: 75vh;
-	-o-object-fit: cover;
-	object-fit: cover;
-	margin: 7px 0 0 0;
-} */
 .single_post_img {
   width: 100%;
   height: 75vh;
@@ -72,18 +62,12 @@ export default {
 }
 .post_title_container {
   text-decoration: none;
-  /* position: absolute; */
-  /* bottom: -16%; */
-  /* left: 50%; */
 }
 .create_post_container {
   display: flex;
   flex-direction: row;
-  /* background: #FFFFFF; */
   width: 26vw;
-  /* border-bottom: solid 1px black; */
   margin: 0 0 25px 0;
-  /* border-radius: 50px; */
   overflow: hidden;
 }
 a:hover {

@@ -5,7 +5,7 @@ import CreatePost from "../views/CreatePost.vue"
 import ViewPost from "../views/ViewPost.vue"
 import SinglePost from "../views/SinglePost.vue"
 import Tag from "../views/Tag.vue"
-import Category from "../views/Lifestyle.vue"
+import Category from "../views/Category.vue"
 
 // auth guard
 const requireAuth = (to, from, next) => {

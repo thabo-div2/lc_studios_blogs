@@ -1,22 +1,11 @@
 <template>
-  <!-- <nav class="top_nav">
-		<div class="topnav_container" v-if="user">
-
-			<router-link :to="{ name: 'ViewPost' }">See All Post</router-link>
-			<router-link :to="{ name: 'CreatePost' }">Create a Post</router-link>
-			<div>
-				<p>hey there... {{ user.displayName }}</p>
-				<p class="email">Currently logged in as... {{ user.email }}</p>
-			</div>
-			<button @click="handleClick">Logout</button>
-		</div>
-	</nav> -->
   <nav class="navbar navbar-expand-lg navbar-light top_nav">
     <div class="container-fluid" v-if="user">
       <div class="first_row">
         <a class="navbar_brand" href="/posts/">The Blog Cultivaters</a>
         <form class="d-flex">
           <input
+            v-model="search"
             class="form-control me-2"
             type="search"
             placeholder="Search"
@@ -27,9 +16,6 @@
           </button>
         </form>
       </div>
-      <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button> -->
       <div class="second_row">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -40,30 +26,13 @@
                 >
               </a>
             </li>
-            <!-- <li class="nav-item">
-              <a class="nav-link" href="#"
-                ><router-link
-                  :to="{ name: 'Category', params: { category: 'Lifestyle' } }"
-                  class="nav_link"
-                  >Lifestyle</router-link
-                ></a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Health</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Travel</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Music</a>
-            </li> -->
 
             <!-- Category filters -->
             <a
               v-for="category in categories"
               :key="category"
               class="nav-item nav-link"
+              @click="reload"
             >
               <router-link
                 :to="{ name: 'Category', params: { category: category } }"
@@ -107,9 +76,6 @@
                 </li>
               </ul>
             </li>
-            <!-- <li class="nav-item">
-						<a class="nav-link disabled">Disabled</a>
-						</li> -->
           </ul>
         </div>
         <div
@@ -156,7 +122,11 @@ export default {
       }
     }
 
-    return { handleClick, user, categories }
+    const reload = () => {
+      window.location.reload()
+    }
+
+    return { handleClick, user, categories, reload }
   },
 }
 </script>
@@ -165,11 +135,9 @@ export default {
 .post_page_container {
   display: flex;
   justify-content: center;
-  /* flex-direction: column; */
-  /* overflow-y: scroll; */
+
   margin: 156px 0 0 0;
   background: #f8f8f8;
-  /* margin: 170px 0 0 0 */
 }
 .container-fluid {
   display: flex;
@@ -177,7 +145,6 @@ export default {
 }
 .first_row {
   display: flex;
-  /* flex-direction: row; */
   width: 85%;
   justify-content: space-between;
 }
@@ -186,7 +153,6 @@ export default {
   box-sizing: border-box;
   width: 85%;
   justify-content: space-between;
-  /* flex-direction: row; */
 }
 .d-flex {
   display: flex !important;
@@ -199,15 +165,11 @@ export default {
   justify-content: flex-end;
 }
 .navbar {
-  /* background-color: #327a77; */
   background-color: #f8f8f8;
-  /* margin: 69px 0 0 0; */
-  /* position: fixed; */
   position: fixed;
   width: 100%;
   top: 0;
   height: 25vh;
-  /* z-index: 1; */
 }
 .form-control {
   border: none;
@@ -219,7 +181,6 @@ export default {
 }
 .form-control:focus {
   outline: none;
-  /* outline:0; */
   -webkit-appearance: none;
   box-shadow: none;
   -moz-box-shadow: none;
@@ -239,8 +200,6 @@ export default {
 }
 .form-control::placeholder {
   color: black;
-  /* color: #C9D6FF; */
-  /* color: #a1f2ee; */
   -webkit-text-stroke: 0.1px black;
   -webkit-font-smoothing: antialiased;
   font-family: "Barlow", sans-serif;
@@ -263,8 +222,6 @@ export default {
   justify-content: center;
 }
 .social_icon:hover {
-  /* height: 30px;
-    width: 30px; */
   background: #e3ad1b;
   margin: 0 0 0 5px;
   border-radius: 15px;

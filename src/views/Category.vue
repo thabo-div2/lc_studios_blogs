@@ -3,7 +3,7 @@
   <div>
     <div v-if="error">{{ error }}</div>
     <div v-if="documents.length">
-      <BlogPosts :formattedDocuments="postsWithTag" />
+      <BlogPosts :formattedDocuments="filteredPosts" />
     </div>
   </div>
 </template>
@@ -23,13 +23,13 @@ export default {
     const updated_category =
       category.charAt(0).toUpperCase() + category.slice(1)
 
-    const postsWithTag = computed(() => {
+    const filteredPosts = computed(() => {
       return documents.value.filter((p) =>
         p.category.includes(updated_category)
       )
     })
 
-    return { error, documents, postsWithTag }
+    return { error, documents, filteredPosts }
   },
 }
 </script>

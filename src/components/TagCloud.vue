@@ -10,17 +10,16 @@
 </template>
 
 <script>
-import useTags from "../composables/useTags";
+import useTags from "@/composables/useTags"
 
 export default {
-  // i
-  setup(props) {
-    const { tags } = useTags(props.posts);
-
-    return { tags };
-  },
-
   props: ["posts"],
-};
+  // hgv
+  setup(props) {
+    const { tags } = useTags(props.posts)
+
+    return { tags }
+  },
+}
 </script>
 <style></style>
