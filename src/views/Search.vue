@@ -3,7 +3,7 @@
   <div>
     <div v-if="error">{{ error }}</div>
     <div v-if="documents.length">
-      <BlogPosts :formattedDocuments="filteredPosts" />
+      <BlogPosts :formattedDocuments="searchedPosts" />
     </div>
   </div>
 </template>
@@ -15,21 +15,19 @@ import { useRoute } from "vue-router"
 import { computed } from "@vue/reactivity"
 
 export default {
-  components: { BlogPosts, getCollection },
+  components: { BlogPosts },
   setup() {
     const route = useRoute()
     const { error, documents } = getCollection("posts")
-    const category = route.params.category
-    const updated_category =
-      category.charAt(0).toUpperCase() + category.slice(1)
+    const search = route.params.search
+    // const updated_category =
+    //   category.charAt(0).toUpperCase() + category.slice(1)
 
-    const filteredPosts = computed(() => {
-      return documents.value.filter((p) =>
-        p.category.includes(updated_category)
-      )
+    const searchedPosts = computed(() => {
+      return documents.value.filter((p) => p.title.includes(search))
     })
 
-    return { error, documents, filteredPosts }
+    return { error, documents, searchedPosts }
   },
 }
 </script>

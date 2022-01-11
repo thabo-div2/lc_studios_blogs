@@ -6,6 +6,7 @@ import ViewPost from "../views/ViewPost.vue"
 import SinglePost from "../views/SinglePost.vue"
 import Tag from "../views/Tag.vue"
 import Category from "../views/Category.vue"
+import Search from "../views/Search.vue"
 
 // auth guard
 const requireAuth = (to, from, next) => {
@@ -59,6 +60,11 @@ const routes = [
     path: "/category/:category",
     name: "Category",
     component: Category,
+  },
+  {
+    path: "/search/:search",
+    name: "Search",
+    component: Search,
   },
 ]
 

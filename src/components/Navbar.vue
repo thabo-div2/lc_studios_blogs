@@ -5,15 +5,24 @@
         <a class="navbar_brand" href="/posts/">The Blog Cultivaters</a>
         <form class="d-flex">
           <input
-            v-model="search"
+            v-model="searchQuery"
             class="form-control me-2"
             type="search"
             placeholder="Search"
             aria-label="Search"
           />
-          <button class="btn" type="submit">
+          <!-- <button class="btn" type="submit">
             <i class="fas fa-search"></i>
-          </button>
+          </button> -->
+          <router-link
+            :to="{ name: 'Search', params: { search: searchQuery } }"
+            tag="button"
+            class="btn"
+            type="submit"
+          >
+            <i class="fas fa-search"></i>
+          </router-link>
+          <p>{{ searchQuery }}</p>
         </form>
       </div>
       <div class="second_row">
@@ -101,9 +110,12 @@
 import useLogout from "../composables/useLogout"
 import getUsers from "../composables/getUsers"
 import { useRouter } from "vue-router"
+import { computed, ref } from "@vue/reactivity"
 
 export default {
   setup() {
+    const searchQuery = ref(".")
+
     const categories = {
       1: "Lifestyle",
       2: "Health",
@@ -126,7 +138,13 @@ export default {
       window.location.reload()
     }
 
-    return { handleClick, user, categories, reload }
+    return {
+      handleClick,
+      user,
+      categories,
+      reload,
+      searchQuery,
+    }
   },
 }
 </script>
