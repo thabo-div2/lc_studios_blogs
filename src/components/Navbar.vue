@@ -22,7 +22,7 @@
           >
             <i class="fas fa-search"></i>
           </router-link>
-          <p>{{ searchQuery }}</p>
+          <!-- <p>{{ searchQuery }}</p> -->
         </form>
       </div>
       <div class="second_row">
@@ -114,7 +114,7 @@ import { computed, ref } from "@vue/reactivity"
 
 export default {
   setup() {
-    const searchQuery = ref(".")
+    const searchQuery = ref("Search")
 
     const categories = {
       1: "Lifestyle",
